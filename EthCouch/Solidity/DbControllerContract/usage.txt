@@ -1,0 +1,5 @@
+address 0xa49b70567a9adc9c80dde546798bd1e887f80d4f
+functions:
+	setDbFunction (string _task, string _uuid_dataset, string _editor_name)
+	getDbFunctions ()
+	echo(string abc) // returns as bytes

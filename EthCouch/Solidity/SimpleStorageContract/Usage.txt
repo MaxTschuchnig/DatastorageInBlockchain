@@ -1,0 +1,12 @@
+setNumber(uint _number)
+	sha: "0x3fb5c1cb9d57cc981b075ac270f9215e697bc33dacd5ce87319656ebf8fc7b92"
+	3fb5c1cb
+	
+	curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0", "method":"eth_sendTransaction","params": [{"from": "0xc01417230d89004fe2b93d00f9eafe5114f6d210","to": "0xf21fb99f4b0b6e47a62082c1e67b99ddd9201aa5", "data": "0x3fb5c1cb000000000000000000000000000000000000000000000000000000000000001a"}], "id":1}' localhost:8545
+	
+getAllNumbers()
+	sha: "0x74fddd21f80b680dceef03d70725d27aa6e477b2859007e46437f8a8e5631554"
+	74fddd21
+	
+	curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0", "method":"eth_call", "params":[{"to": "0xf21fb99f4b0b6e47a62082c1e67b99ddd9201aa5", "data": "0x74fddd21000000000000000000000000000000000000000000000000000000000000000a"}, "latest"], "id":1}' localhost:8545
+

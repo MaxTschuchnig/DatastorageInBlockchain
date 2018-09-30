@@ -1,0 +1,21 @@
+Install-Package Microsoft.AspNet.WebApi.Client -Version 5.2.6
+Install-Package Microsoft.AspNet.WebApi.Core -Version 5.2.6
+Install-Package Microsoft.Owin.Host.HttpListener -Version 4.0.0 
+Install-Package Microsoft.Owin.Hosting -Version 4.0.0 
+Install-Package Microsoft.Owin -Version 4.0.0 
+Install-Package Newtonsoft.Json -Version 11.0.2 
+Install-Package Owin -Version 1.0.0 
+Install-Package Topshelf -Version 4.0.4 
+Install-Package Microsoft.AspNet.WebApi.Owin
+install-package Microsoft.AspNet.WebApi.Cors
+Install-Package Microsoft.AspNet.WebApi.OwinSelfHost
+
+Uninstall-Package Microsoft.Owin.Hosting
+Uninstall-Package Microsoft.Owin.Host.HttpListener
+Uninstall-Package Microsoft.AspNet.WebApi.Owin
+Uninstall-Package Microsoft.Owin
+Uninstall-Package Microsoft.AspNet.WebApi.Core
+Uninstall-Package Microsoft.AspNet.WebApi.Client
+Uninstall-Package Newtonsoft.Json
+Uninstall-Package Topshelf
+Uninstall-Package Owin

@@ -1,0 +1,102 @@
+pragma solidity ^0.4.4;
+
+contract DbControllerContract {
+    struct DbFunction {
+        string task;
+        string uuid_dataset;
+        string editor_name;
+        uint256 sequence_id;
+    }
+    
+    uint256 s_sequence_id;
+    
+    event received_new(string _msg);
+    event added_new(string _msg);
+    
+    DbFunction[] DbFunctions;
+    
+    function DbControllerContract () public {
+        s_sequence_id = 0;
+    }
+    
+    function setDbFunction(string _task, string _uuid_dataset, string _editor_name) public{
+        received_new('Received new Db transaction');
+        DbFunction memory newDbFunction = DbFunction(_task, _uuid_dataset, _editor_name, s_sequence_id);
+        DbFunctions.push(newDbFunction);
+        added_new(concat(_uuid_dataset,uint2str(s_sequence_id)));
+        s_sequence_id = s_sequence_id + 1;
+    }
+    
+    function getDbFunctions() constant public returns(string) {
+        uint256 i=0;
+
+        string memory _tmpValue = concat(uint2str(DbFunctions.length), ":");
+        
+        for(i;i<DbFunctions.length;i++) {
+            string memory _task = concat(DbFunctions[i].task,";");
+            string memory _uuid_dataset = concat(DbFunctions[i].uuid_dataset,";");
+            string memory _editor_name = concat(DbFunctions[i].editor_name,";");
+            string memory _sequence_id = concat(uint2str(DbFunctions[i].sequence_id),";");
+            
+            uint _task_len = bytes(_task).length;
+            uint _uuid_dataset_len = bytes(_uuid_dataset).length;
+            uint _editor_name_len = bytes(_editor_name).length;
+            uint _sequence_id_len = bytes(_sequence_id).length;
+            uint _len = bytes(_tmpValue).length + _task_len + _uuid_dataset_len + _editor_name_len + _sequence_id_len;
+            
+            string memory temp = _tmpValue;
+            _tmpValue = new string(_len);
+            
+            string memory c = concat(temp, _task);
+            c = concat(c, _uuid_dataset);
+            c =  concat(c, _editor_name);
+            _tmpValue = concat(c, _sequence_id);
+        }
+        return _tmpValue;
+    }
+    
+    function concat(string _base, string _value) internal pure returns (string) {
+        bytes memory _baseBytes = bytes(_base);
+        bytes memory _valueBytes = bytes(_value);
+
+        string memory _tmpValue = new string(_baseBytes.length + _valueBytes.length);
+        bytes memory _newValue = bytes(_tmpValue);
+
+        uint i = 0;
+        uint j = 0;
+
+        for(i=0; i<_baseBytes.length; i++) {
+            _newValue[j++] = _baseBytes[i];
+        }
+
+        for(i=0; i<_valueBytes.length; i++) {
+            _newValue[j++] = _valueBytes[i];
+        }
+
+        return string(_newValue);
+    }
+    
+    function uint2str(uint i) internal pure returns (string)
+    { 
+        if (i == 0) return "0"; 
+        
+        uint j = i; 
+        uint length; 
+        
+        while (j != 0)
+        { 
+            length++; 
+            j /= 10; 
+        } 
+        
+        bytes memory bstr = new bytes(length); 
+        uint k = length - 1; 
+        
+        while (i != 0)
+        { 
+            bstr[k--] = byte(48 + i % 10); 
+            i /= 10; 
+        } 
+        return string(bstr); 
+    }
+}

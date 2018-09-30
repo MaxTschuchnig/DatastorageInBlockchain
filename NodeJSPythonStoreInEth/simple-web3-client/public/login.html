@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greetings</title>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.min.css">
+
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+            padding-bottom: 60px;
+        }
+
+        body {
+            margin-bottom: 60px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px; /* Set the fixed height of the footer here */
+            line-height: 60px; /* Vertically center the text there */
+            background-color: #eee;
+        }
+
+        #data {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="jumbotron" style="margin-top: 25px;">
+        <h1 class="text-center">Login / Register</h1>
+        <hr>
+
+        <div class="container"
+             style="background-color: #fff;border-radius: 5px;padding: 20px;border: dotted 4px #bbb;margin: 4px;">
+            <form class="form-horizontal" id="registerForm">
+                <h2>Registrieren</h2>
+
+                <hr>
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Max Ernst Mustermann">
+                </div>
+
+                <div class="form-group">
+                    <label for="addressCustomer">Adresse</label>
+                    <input type="text" class="form-control" id="addressCustomer" placeholder="Hauptstraße 42">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Stadt</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="Salzburg">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Land</label>
+                        <select id="inputState" class="form-control">
+                            <option>Auswählen...</option>
+                            <option selected>Österreich</option>
+                            <option>Deutschland</option>
+                            <option>Schweiz</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="plz">PLZ</label>
+                        <input type="number" class="form-control" id="plz">
+                    </div>
+                </div>
+
+                <hr>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Registrieren</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+
+</div>
+
+<footer class="footer visible-md visible-lg">
+    <div class="container">
+        <span class="text-muted text-center">
+            Test Application for developing Smart Contracts on the Ethereum blockchain
+        </span>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

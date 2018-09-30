@@ -1,0 +1,29 @@
+prot_v1.0:
+implement new type, rev, to bc     												-- done
+update functions to get and set    												-- done
+testing 																		-- done
+min design																		-- done
+
+prot_v1.01:
+automate non used inputs like
+	user																		-- done
+	uuid																		-- done
+spinner for action (allow only add, edit and delete)							-- done
+Fix max 10 return by implementing return function with from to sequence id		-- done
+check for null in ret data to secure return with empty chain					-- not done, obsolete with prot 1.02
+
+prot_v1.02:
+refactor code																	-- done
+Implement a simple, client side ticketing system
+
+prot_v1.1:
+implement register node on btc
+implement node app
+	get interface to store data
+	store data
+	store revs
+implement function get revs from xxxx
+get data from get revs
+
+prot_v1.2:
+implement protocol

@@ -1,0 +1,94 @@
+in geth: 
+	geth removedb
+	geth --testnet removedb
+	geth init genesis.json
+	geth account list
+
+	start testnet:
+		geth --testnet --fast --rpc --rpcapi "db,eth,net,web3,personal" --verbosity 3 --rpccorsdomain "*" --maxpeers 0
+		geth --mine --testnet --fast --rpc --rpcapi "db,eth,net,web3,personal" --verbosity 3 --rpccorsdomain "*" --maxpeers 0
+
+new account:
+	geth account new
+	personal.newAccount("maxi")
+
+	0xc01417230d89004fe2b93d00f9eafe5114f6d210
+	maxi96
+
+attached:
+	geth attach http://localhost:8545
+	web3.eth.defaultAccount = eth.accounts[0]
+	web3.fromWei(eth.getBalance(eth.coinbase), "ether")
+	web3.personal.unlockAccount(web3.eth.coinbase);
+	
+encode parameters:
+	var web3EthAbi = require('web3-eth-abi');
+	web3EthAbi.encodeParameter('string', 'hello world');
+	web3EthAbi.encodeParameter('string', 'Two times hello world');
+	web3EthAbi.encodeParameter('string', 'Two times hello world with extra');
+	web3EthAbi.encodeParameter('string', 'long as hell text fuck my life this text is long wooooooooooow');
+	web3EthAbi.encodeParameter('string', 'a');
+	web3EthAbi.encodeParameter('string', 'b');
+	web3EthAbi.encodeParameter('string', 'c');
+	web3EthAbi.encodeParameter('string', 'abc');
+
+other:
+	Web3 = require("Web3");
+	web3 = new Web3();
+
+	privateKeyRaw = web3.utils.sha3("Toholampi is the best town on the world");
+
+	var ethers = require('ethers');
+	var wallet = new ethers.Wallet(privateKeyRaw);
+	wallet.address
+	
+
+Get Hash of function:
+	web3.sha3('setValue(uint256)')	
+	"0x5524107728b6898cfcb4f9c8c4692293f130d6580f855e9f0718b1fa98cbecbd" 
+first 4 byte for data param:
+	0x55241077
+Add rest of data (zeroes & 5):
+	0x552410770000000000000000000000000000000000000000000000000000000000000005
+	
+	curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0", "method":"eth_call", "params":[{"from": "0xc01417230d89004fe2b93d00f9eafe5114f6d210", "to": "0x98b299b3092f576aba851583728c02774fba7bfa", "data": "0x552410770000000000000000000000000000000000000000000000000000000000000005"}, "latest"], "id":1}' localhost:8545 
+
+	working:
+	curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0", "method":"eth_call", "params":[{"to": "0x98b299b3092f576aba851583728c02774fba7bfa", "data": "0x55241077000000000000000000000000000000000000000000000000000000000000000a"}, "latest"], "id":1}' localhost:8545
+
+function setPerson
+	web3.sha3('setPerson(uint256,string)')
+	"0x798ebec4c18141e8f5c98a19cc68d5f7d952736fddcf91a3b0f72ee1b0675a1e"
+	798ebec4
+	at
+		0x9263ebf1c9ce4e34e81eb06e0994394e63ab56f6
+
+	curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params": [{
+	"from": "0xc01417230d89004fe2b93d00f9eafe5114f6d210",
+	"to": "0x9263ebf1c9ce4e34e81eb06e0994394e63ab56f6",
+	"gas": "0xF1CD",
+	"gasPrice": "0x9184e72a000",
+	"value": "0x9184e72a",
+ 	"data": "0x798ebec40000000000000000000000000000000000000000372c4d6178696d696c69616e"
+ }],"id":1}' localhost:8545
+	
+	curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params": [{"from": "0xc01417230d89004fe2b93d00f9eafe5114f6d210","to": "0x9263ebf1c9ce4e34e81eb06e0994394e63ab56f6","gas": "0xF1CD","gasPrice": "0x9184e72a000","value": "0x9184e72a","data": "0x798ebec40000000000000000000000000000000000000000372c4d6178696d696c69616e"}],"id":1}' localhost:8545
+	curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params": [{"from": "0xc01417230d89004fe2b93d00f9eafe5114f6d210","to": "0x9263ebf1c9ce4e34e81eb06e0994394e63ab56f6","data": "0x798ebec40000000000000000000000000000000000000000372c4d6178696d696c69616e"}],"id":1}' localhost:8545
+	
+function getPersons
+	web3.sha3('getAllPersons()')
+	"0x7fa4ba8723f2c885b59ebd7c0b2572e1821579d34c8061b04a95981339cbd146"
+	7fa4ba87
+	at
+	0x9263ebf1c9ce4e34e81eb06e0994394e63ab56f6
+	
+	working:
+	curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params": [{"to": "0x9263ebf1c9ce4e34e81eb06e0994394e63ab56f6","data": "0x7fa4ba870000000000000000000000000000000000000000000000000000000000000000"}, "latest"],"id":1}' localhost:8545
+	
+	
+adding peers:
+	geth --bootnodes enode://pubkey1@ip1:port1,enode://pubkey2@ip2:port2,enode://pubkey3@ip3:port3
+	
+net.listening
+net.peerCount
+personal.listAccounts
